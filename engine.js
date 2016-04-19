@@ -18,7 +18,7 @@ function parseEvents(text) {
 	var currentEvent = null;
 	var mandatories = [];
 	text.split("\n").forEach(function (l) {
-		if (l.length == 0) { return; }
+		if (l.length == 0 || l.startsWith("#")) { return; }
 		if (l.startsWith("---")) {
 			if (currentEvent !== null) {
 				events.push(currentEvent);
@@ -153,6 +153,10 @@ function format(text) {
 function displayState() {
 	var progress = gameState.qualities["progress"] || 0;
 	var text = "<img src=\"images/map" + progress + ".jpg\" class=\"map\">";
+	// Debug statuzzim.
+	for (var k in gameState.qualities) {
+		text += k + " = " + gameState.qualities[k] + "<br>";
+	}
 	text += format(gameState.currentEvent.text);;
 	for (var i = 0; i < gameState.currentEvent.options.length; i++) {
 		text += "<div class=\"option\" onclick=\"pickOption(" + i + ")\">" +
