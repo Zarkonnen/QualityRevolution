@@ -16,6 +16,7 @@ function parseEvents(text) {
 	var events = [];
 	var currentEvent = null;
 	text.split("\n").forEach(function (l) {
+		if (l.length == 0) { return; }
 		if (l.startsWith("---")) {
 			if (currentEvent !== null) {
 				events.push(currentEvent);
