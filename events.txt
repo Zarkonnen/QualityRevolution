@@ -1,0 +1,4 @@
+--- anger . 20 king_dead = 0
+The king is ((anger > 30) livid)((anger <= 30) angry).
+-> Stab him! -> king_dead = 1
+-> Placate his anger. -> anger - 10
