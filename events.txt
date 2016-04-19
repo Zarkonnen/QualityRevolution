@@ -33,7 +33,7 @@ You get in front of your troops and assembled onlookers.
 -> Promise to bring prosperity to the island. -> !speech = 0 corrupt + 2 foreign + 2
 -> Extol your own virtues as a commander. -> !speech = 0 autocratic + 5 red_scribe - 3 apple + 3
 -> Denounce the brutality of the Dictator's regime and his henchmen. -> !speech = 0 brutal - 4 military - 4 strength - 1
--> Ask for anyone brave enough to join your rebellion. !speech = 0 strength + 3
+-> Ask for anyone brave enough to join your rebellion. -> !speech = 0 strength + 3
 
 # Party outcomes: and fun was had, singing, looting, raping
 --- !party = 1 villagers . 30 singers . 0
@@ -51,7 +51,7 @@ The party descends into a drunken mess, and your troops smash up the local villa
 --- !party = 1 villagers . -30 brutal . 100
 Initially, the festivities are peaceful, but soon the combination of drink and youthful energy leads to arguments, and arguments lead to ugly fights. Several villagers lie dead the next morning.
 -> OK -> !party = 0 villagers - 20
---- !party = 1 plum_rape . 0
+--- !party = 1 weight = 40 plum_rape . 20
 During the festivities you come across Plum having a fight with a local prostitute, who accuses him of refusing to pay her.
 -> You have better things to do than get involved in such disputes. -> !party = 0 plum_rape + 10 autocracy + 2
 -> Tell Plum to go sleep off his liquor -> !party = 0 plum_rape + 5

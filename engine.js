@@ -24,6 +24,7 @@ function parseEvents(text) {
 				events.push(currentEvent);
 			}
 			currentEvent = {
+				"weight": 100,
 				"conditions": [],
 				"situation": [],
 				"text": "",
@@ -35,6 +36,8 @@ function parseEvents(text) {
 				}
 				if (t.op === ".") {
 					currentEvent.situation.push(t);
+				} else if (t.q == "weight") {
+					currentEvent.weight = t.v;
 				} else {
 					currentEvent.conditions.push(t);
 				}
@@ -87,7 +90,8 @@ function pickNextEvent() {
 	var dCandidates = candidates.map(function(c) {
 		var dist = c.situation.reduce(function(prev, s) {
 			return prev + Math.pow(s.v - (gameState.qualities[s.q] || 0), 2);
-		}, 1);
+		}, 0);
+		dist = dist / (c.situation.length + 1) + 100;
 		return [dist, c];
 	});
 	if (dCandidates.length === 0) {
@@ -99,7 +103,11 @@ function pickNextEvent() {
 	var weightedCandidates = dCandidates.filter(function(dc) {
 		return dc[0] < leastDistance * 4;
 	}).map(function(dc) {
-		return [1.0 / (dc[0]), dc[1]];
+		return [dc[1].weight * 1.0 / (dc[0]), dc[1]];
+	});
+	console.log(weightedCandidates.length + " options:");
+	weightedCandidates.forEach(function (wc) {
+		console.log(wc[0] + " " + wc[1].text);
 	});
 	var totalWeight = weightedCandidates.reduce(function(prev, wc) {
 		return prev + wc[0];
@@ -154,10 +162,12 @@ function displayState() {
 	var progress = gameState.qualities["progress"] || 0;
 	var text = "<img src=\"images/map" + progress + ".jpg\" class=\"map\">";
 	// Debug statuzzim.
+	text += "<div id=\"debug\" style=\"position: absolute; top: 5px; left: 5px;\">";
 	for (var k in gameState.qualities) {
 		text += k + " = " + gameState.qualities[k] + "<br>";
 	}
-	text += format(gameState.currentEvent.text);;
+	text += "</div>";
+	text += format(gameState.currentEvent.text);
 	for (var i = 0; i < gameState.currentEvent.options.length; i++) {
 		text += "<div class=\"option\" onclick=\"pickOption(" + i + ")\">" +
 			format(gameState.currentEvent.options[i].text) +
@@ -171,7 +181,6 @@ var events = null;
 var gameState = null;
 jQuery.ajax("events.txt").done(function(text) {
 	events = parseEvents(text);
-	console.log(JSON.stringify(events, null, 4));
 	gameState = {
 		"qualities": {},
 		"currentEvent": events[0]
