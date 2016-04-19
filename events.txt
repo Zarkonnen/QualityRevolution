@@ -7,18 +7,20 @@ With the aid of farming tools and simple weapons, you defeat the small garrison 
 
 But what do you do first, on the day of your first victory?
 -> Throw a party to celebrate! -> party = 1 progress = 1 villagers = 10
--> Interrogate the surviving enemy troops. -> interrogate = 1 progress = 1
+-> Interrogate the surviving enemy troops. -> !interrogate = 1 progress = 1
 -> Make an impassioned speech in the town square. -> speech = 1 progress = 1 autocratic = 10
 
---- interrogate = 1 brutal . 30
+--- !interrogate = 1 brutal . 30
 You have the prisoners brought out. You shout at them, and rough them up a little, and they let slip some useful information: a weapons cache, some details about deployments, some gossip. ((apple_sadism > -50 apple_sadism < 50) Apple watches with rapt attention.)((apple_sadism >= 50) Apple takes them away.)
--> OK -> interrogate = 0 strength + 5 brutal + 2 military - 4 apple_sadism + 5
---- interrogate = 1 brutal . -40 military . -10
+-> OK -> !interrogate = 0 strength + 5 brutal + 2 military - 4 apple_sadism + 5
+--- !interrogate = 1 brutal . -40 military . -10
 You visit the prisoners one by one, and attempt to talk them over to your side. None of them are interested. This is going to be a long war.
--> OK -> interrogate = 0 autocratic - 2 military + 4
---- interrogate = 1 brutal . -40 military . 20
+-> OK -> !interrogate = 0 autocratic - 2 military + 4
+--- !interrogate = 1 brutal . -40 military . 20
 You visit the prisoners one by one, and manage to get some useful intelligence out of them. They're not entirely unsympathetic to your cause.
--> OK -> interrogate = 0 military + 4 strength + 2
---- interrogate = 1 brutal . -30 military . 70
+-> OK -> !interrogate = 0 military + 4 strength + 2
+--- !interrogate = 1 brutal . -30 military . 70
 You visit the prisoners one by one. Some of them are convinced by the rightness of your cause and join you.
--> OK -> interrogate = 0 military + 4 strength + 2
+-> OK -> !interrogate = 0 military + 4 strength + 2
+---
+Generic event.

@@ -16,6 +16,7 @@ function triplets(l) {
 function parseEvents(text) {
 	var events = [];
 	var currentEvent = null;
+	var mandatories = [];
 	text.split("\n").forEach(function (l) {
 		if (l.length == 0) { return; }
 		if (l.startsWith("---")) {
@@ -29,6 +30,9 @@ function parseEvents(text) {
 				"options": []
 			};
 			triplets(l.substring(3).trim().split(" ")).forEach(function (t) {
+				if (t.q.startsWith("!") && mandatories.indexOf(t.q) === -1) {
+					mandatories.push(t.q);
+				}
 				if (t.op === ".") {
 					currentEvent.situation.push(t);
 				} else {
@@ -45,6 +49,16 @@ function parseEvents(text) {
 		}
 	});
 	events.push(currentEvent);
+	// Add mandatories to events.
+	events.forEach(function(e) {
+		mandatories.forEach(function(m) {
+			if (!e.conditions.some(function(c) {
+				return c.q === m;
+			})) {
+				e.conditions.push({"q": m, "op": "=", "v": 0});
+			}
+		});
+	});
 	return events;
 }
 
@@ -153,6 +167,7 @@ var events = null;
 var gameState = null;
 jQuery.ajax("events.txt").done(function(text) {
 	events = parseEvents(text);
+	console.log(JSON.stringify(events, null, 4));
 	gameState = {
 		"qualities": {},
 		"currentEvent": events[0]
