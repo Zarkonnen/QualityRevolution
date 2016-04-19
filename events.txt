@@ -1,5 +1,7 @@
 ---
 You are having an audience with the king.
+
+What do you do?
 -> Insult him! -> anger + 10
 -> Say hi.
 

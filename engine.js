@@ -131,6 +131,7 @@ function format(text) {
 			text = text.substring(0, subStart) + text.substring(subEnd + 1);
 		}
 	}
+	text = text.replace(/\n/g, "<br><br>");
 	return text;
 }
 
