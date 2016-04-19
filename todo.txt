@@ -1,0 +1,13 @@
+- define 1st version size
+- plan variables
++ map display images
+- map display
+- basic victory
+- basic defeat
+- basic progress
+- basic regress
+- impatience bottom-out
+- strength bottom-out
+- left. interactions
+- journo appear, disappear, interactions
+- spook appear, disappear, interactions

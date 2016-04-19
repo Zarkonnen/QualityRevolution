@@ -2,7 +2,8 @@
 
 /* Converts a list into a list of triplets of q, op, v. */
 function triplets(l) {
-	if (l.length > 0 && l.length % 3 !== 0 && !(l.length == 1 && l[0].length == 0)) {
+	if ((l.length == 1 && l[0].length == 0)) { return []; }
+	if (l.length > 0 && l.length % 3 !== 0) {
 		throw "Number of elements is not a multiple of 3: " + l.length + " " + l.join(", ");
 	}
 	var l2 = [];
@@ -136,7 +137,9 @@ function format(text) {
 }
 
 function displayState() {
-	var text = format(gameState.currentEvent.text);
+	var progress = gameState.qualities["progress"] || 0;
+	var text = "<img src=\"images/map" + progress + ".jpg\" class=\"map\">";
+	text += format(gameState.currentEvent.text);;
 	for (var i = 0; i < gameState.currentEvent.options.length; i++) {
 		text += "<div class=\"option\" onclick=\"pickOption(" + i + ")\">" +
 			format(gameState.currentEvent.options[i].text) +

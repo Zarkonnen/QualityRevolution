@@ -1,15 +1,24 @@
 ---
-You are having an audience with the king.
+Long have the citizens of Sunrise Island been oppressed by the Dictator. At long last, far from the palace in Dawnport, rebellion is brewing.
 
-What do you do?
--> Insult him! -> anger + 10
--> Say hi.
+You have gathered around you a small group of patriots led by three loyal lieutenants: Apple, Plum and Red Scribe. Apple and Plum are from the Singer tribe while Red Scribe is from the Chasers. Those don't usually get along, but they are united in their hatred of the Dictator.
 
---- anger . 20 king_dead = 0
-The king is ((anger > 30) livid)((anger <= 30 anger > 0) angry)((anger <= 0) smiling).
--> Stab him! -> king_dead = 1
--> Placate his anger. -> anger - 10
--> Insult him! -> anger + 10
+With the aid of farming tools and simple weapons, you defeat the small garrison that had held sway over this remote part of the island. But the road to Dawnport is long, and the Dictator is sure to strike back. You must strengthen your forces and prepare to strike at the Highlands Base, the major military installation in this part of the island.
 
---- king_dead = 1
-The king is dead! Long live the king!
+But what do you do first, on the day of your first victory?
+-> Throw a party to celebrate! -> party = 1 progress = 1 villagers = 10
+-> Interrogate the surviving enemy troops. -> interrogate = 1 progress = 1
+-> Make an impassioned speech in the town square. -> speech = 1 progress = 1 autocratic = 10
+
+--- interrogate = 1 brutal . 30
+You have the prisoners brought out. You shout at them, and rough them up a little, and they let slip some useful information: a weapons cache, some details about deployments, some gossip. ((apple_sadism > -50 apple_sadism < 50) Apple watches with rapt attention.)((apple_sadism >= 50) Apple takes them away.)
+-> OK -> interrogate = 0 strength + 5 brutal + 2 military - 4 apple_sadism + 5
+--- interrogate = 1 brutal . -40 military . -10
+You visit the prisoners one by one, and attempt to talk them over to your side. None of them are interested. This is going to be a long war.
+-> OK -> interrogate = 0 autocratic - 2 military + 4
+--- interrogate = 1 brutal . -40 military . 20
+You visit the prisoners one by one, and manage to get some useful intelligence out of them. They're not entirely unsympathetic to your cause.
+-> OK -> interrogate = 0 military + 4 strength + 2
+--- interrogate = 1 brutal . -30 military . 70
+You visit the prisoners one by one. Some of them are convinced by the rightness of your cause and join you.
+-> OK -> interrogate = 0 military + 4 strength + 2

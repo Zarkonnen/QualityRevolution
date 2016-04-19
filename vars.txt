@@ -1,0 +1,25 @@
+progress
+strength
+impatience
+brutal
+corrupt
+autocratic
+villagers
+military
+singers
+chasers
+christian
+pagan
+foreign
+apple
+apple_sadism
+plum
+plum_rape
+red_scribe
+red_scribe_corruption
+
+Apple is a young man of the Singer tribe. He idolizes you. He is a sadist. He doesn't mind the Chaser tribe, but he deeply distrusts the Oilers.
+
+Plum is a young man of the Singer tribe. He is deeply christian. He is a rapist. He distrusts the Chasers.
+
+Red scribe is a young man of the Chaser tribe. He despises grand-standing. He is easily bribed. He secretly hates the Singers.
